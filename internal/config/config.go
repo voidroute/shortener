@@ -108,7 +108,7 @@ func Init() (*Config, error) {
 }
 
 func setDefaults() {
-	viper.SetDefault("server.addr", "localhost:8080")
+	viper.SetDefault("server.addr", "0.0.0.0:8080")
 
 	viper.SetDefault("app.base_url", "http://localhost:8080")
 	viper.SetDefault("app.env", "dev")
@@ -146,4 +146,7 @@ func bindEnvVars() {
 
 	_ = viper.BindEnv("cache.use_redis", "CACHE_USE_REDIS")
 	_ = viper.BindEnv("cache.redis_addr", "REDIS_ADDR")
+
+	_ = viper.BindEnv("kafka.addr", "KAFKA_ADDR")
+	_ = viper.BindEnv("kafka.topic", "KAFKA_TOPIC")
 }
