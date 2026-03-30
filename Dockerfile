@@ -8,6 +8,7 @@ RUN go mod download
 COPY . .
 
 RUN go build -o ./bin/app ./cmd/server
+RUN wget -O GeoLite2-Country.mmdb "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-Country.mmdb"
 
 FROM builder AS development
 RUN go install github.com/air-verse/air@latest
