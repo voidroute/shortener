@@ -108,7 +108,7 @@ func Init() (*Config, error) {
 }
 
 func setDefaults() {
-	viper.SetDefault("server.addr", "0.0.0.0:8080")
+	viper.SetDefault("server.addr", "localhost:8080")
 
 	viper.SetDefault("app.base_url", "http://localhost:8080")
 	viper.SetDefault("app.env", "dev")
