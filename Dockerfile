@@ -13,3 +13,10 @@ FROM builder AS development
 RUN go install github.com/air-verse/air@latest
 EXPOSE 8080
 CMD ["air", "-c", ".air.toml"]
+
+FROM alpine:3.23.3 AS production
+WORKDIR /app
+COPY --from=builder /app/bin/app .
+COPY --from=builder /app/GeoLite2-Country.mmdb .
+EXPOSE 8080
+CMD ["./app"]
