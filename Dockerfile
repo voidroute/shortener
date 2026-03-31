@@ -19,5 +19,6 @@ FROM alpine:3.23.3 AS production
 WORKDIR /app
 COPY --from=builder /app/bin/app .
 COPY --from=builder /app/GeoLite2-Country.mmdb .
+COPY --from=builder /app/migrations ./migrations
 EXPOSE 8080
 CMD ["./app"]
